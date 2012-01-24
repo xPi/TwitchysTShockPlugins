@@ -234,13 +234,18 @@ namespace QuestSystemLUA
                 QPlayer ply;
                 if ((ply = QTools.GetPlayerByName(args.Parameters[0])) != null)
                 {
-                    Quest q;
-                    if ((q = QTools.GetQuestByName(args.Parameters[1])) != null)
+                    if (ply.IsLoggedIn)
                     {
-                        ply.NewQuest(q);
+                        Quest q;
+                        if ((q = QTools.GetQuestByName(args.Parameters[1])) != null)
+                        {
+                            ply.NewQuest(q);
+                        }
+                        else
+                            args.Player.SendMessage("Quest does not exist!", Color.Red);
                     }
                     else
-                        args.Player.SendMessage("Quest does not exist!", Color.Red);
+                        args.Player.SendMessage("Player is not logged in!", Color.Red);
                 }
                 else
                     args.Player.SendMessage("Player does not exist!", Color.Red);
