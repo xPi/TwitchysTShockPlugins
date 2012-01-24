@@ -83,13 +83,13 @@ namespace QuestSystemLUA
             Commands.ChatCommands.Add(new Command("stopquest", QCommands.StopQuest, "stopquest")); 
             
             var table = new SqlTable("QuestPlayers",
-                 new SqlColumn("LogInName", MySqlDbType.Text) { Unique = true },
+                 new SqlColumn("LogInName", MySqlDbType.VarChar,96) { Unique = true },
                  new SqlColumn("QuestPlayerData", MySqlDbType.Text)
              );
             SQLWriter.EnsureExists(table);
 
             table = new SqlTable("QuestRegions",
-                new SqlColumn("RegionName", MySqlDbType.Text) { Unique = true },
+                new SqlColumn("RegionName", MySqlDbType.VarChar,96) { Unique = true },
                 new SqlColumn("X1", MySqlDbType.Int32),
                 new SqlColumn("Y1", MySqlDbType.Int32),
                 new SqlColumn("X2", MySqlDbType.Int32),
