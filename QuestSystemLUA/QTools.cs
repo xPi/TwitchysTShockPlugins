@@ -277,6 +277,7 @@ namespace QuestSystemLUA
             {
                 try
                 {
+                    if (path.Split('.')[1] != "lua") continue;
                     string[] configfile = File.ReadAllLines(path.Split('.')[0] + ".cfg");
                     string Name = "";
                     int MaxAttempts = 0;
@@ -294,7 +295,13 @@ namespace QuestSystemLUA
                         if (line.Trim().StartsWith("AmountOfPlayersAtATime"))
                             AmountOfPlayersAtATime = Int32.Parse(line.Trim().Split(':')[1]);
                         if (line.Trim().StartsWith("EndOnDeath"))
-                            endondeath = bool.Parse(line.Trim().Split(':')[1]);
+                        {
+                            try
+                            {
+                                endondeath = Convert.ToBoolean(line.Trim().Split(':')[1]);
+                            }
+                            catch (FormatException) { }
+                        }
                     }
                     QMain.QuestPool.Add(new Quest(Name, path, MinQuestsNeeded, MaxAttempts, AmountOfPlayersAtATime, endondeath));
                 }
