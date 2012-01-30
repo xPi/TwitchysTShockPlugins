@@ -300,7 +300,7 @@ namespace C3Mod.GameTypes
                         {
                             apocplayers++;
 
-                            player.TSPlayer.SetPvP(false);
+                            //player.TSPlayer.SetPvP(false);
 
                             if (player.TerrariaTeam != 3)
                                 player.TSPlayer.SetTeam(3);

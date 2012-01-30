@@ -898,7 +898,7 @@ namespace C3Mod
                 player.GameType = "";
                 player.TSPlayer.Spawn();
                 player.TSPlayer.SetTeam(0);
-                player.TSPlayer.SetPvP(false);
+                //player.TSPlayer.SetPvP(false);
                 player.LivesUsed = 0;
             }
             else
